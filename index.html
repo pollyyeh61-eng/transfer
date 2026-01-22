@@ -1,56 +1,54 @@
-<div style="font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); background: linear-gradient(135deg, rgba(255, 245, 250, 1) 0%, rgba(240, 245, 255, 1) 50%, rgba(245, 240, 255, 1) 100%); padding: 80px 20px; border-radius: 40px; text-align: center; border: 2px solid rgba(255, 255, 255, 0.8); box-shadow: 0 30px 60px rgba(135, 206, 250, 0.2); position: relative; overflow: hidden;">
+<div style="font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background: linear-gradient(135deg, rgba(255, 245, 250, 1) 0%, rgba(240, 245, 255, 1) 50%, rgba(245, 240, 255, 1) 100%); padding: 60px 20px; border-radius: 40px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 20px 50px rgba(135, 206, 250, 0.15); position: relative; overflow: hidden; max-width: 800px; margin: 0 auto;">
     
-    <div style="position: absolute; top: -10%; left: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 182, 193, 0.3) 0%, transparent 70%); filter: blur(50px);"></div>
-    <div style="position: absolute; bottom: -10%; right: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(135, 206, 250, 0.3) 0%, transparent 70%); filter: blur(50px);"></div>
+    <div style="position: absolute; top: -10%; left: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0, 210, 255, 0.2) 0%, transparent 70%); filter: blur(50px);"></div>
+    <div style="position: absolute; bottom: -10%; right: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(58, 123, 213, 0.2) 0%, transparent 70%); filter: blur(50px);"></div>
 
-    <div style="margin-bottom: 35px; position: relative; z-index: 1;">
-        <div style="width: 90px; height: 90px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 10px 25px rgba(106, 90, 205, 0.15); border: 1px solid rgba(255,255,255,1);">
-            <span style="font-size: 40px; filter: drop-shadow(0 0 5px rgba(181, 154, 93, 0.3));">🔒</span>
+    <div style="margin-bottom: 25px; position: relative; z-index: 1;">
+        <div style="width: 80px; height: 80px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 10px 25px rgba(0, 210, 255, 0.2); border: 1px solid rgba(255,255,255,1);">
+            <span style="font-size: 35px;">🔒</span>
         </div>
     </div>
 
-    <h2 style="background: linear-gradient(90deg, #4b0082, #db7093); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 32px; letter-spacing: 5px; margin-bottom: 15px; font-weight: 900;">數位王國戰略總部</h2>
-    <p style="color: #6a5acd; font-size: 18px; margin-bottom: 45px; font-weight: bold; letter-spacing: 1px; opacity: 0.8;">V-System 10 支 App 商業閉環邏輯</p>
+    <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; letter-spacing: 4px; margin-bottom: 10px; font-weight: 900;">數位王國戰略總部</h2>
+    <p style="color: #2c3e50; font-size: 18px; margin-bottom: 35px; font-weight: bold; opacity: 0.9;">V-System 10 支 App 商業閉環邏輯</p>
 
-    <div style="max-width: 420px; margin: 0 auto; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); padding: 45px; border-radius: 35px; border: 1px solid rgba(255, 255, 255, 0.7); box-shadow: 0 20px 40px rgba(0,0,0,0.05); position: relative; z-index: 1;">
+    <div style="max-width: 380px; margin: 0 auto; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 15px 35px rgba(0, 210, 255, 0.1); position: relative; z-index: 1;">
         
-        <label style="display: block; color: #4b0082; font-size: 16px; font-weight: bold; margin-bottom: 18px; text-align: left; letter-spacing: 1px;">請輸入授權存取密碼：</label>
+        <label style="display: block; color: #2c3e50; font-size: 16px; font-weight: bold; margin-bottom: 15px; text-align: left;">請輸入授權存取密碼：</label>
         
-        <input type="password" placeholder="••••••••" style="width: 100%; padding: 18px; background: rgba(255,255,255,0.7); border: 1px solid rgba(106, 90, 205, 0.2); border-radius: 15px; color: #4b0082; font-size: 20px; margin-bottom: 30px; outline: none; text-align: center; letter-spacing: 6px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);">
+        <input type="password" id="passInput" placeholder="••••••••" style="width: 100%; padding: 15px; background: rgba(255,255,255,0.9); border: 1px solid #e0e0e0; border-radius: 12px; color: #2c3e50; font-size: 20px; margin-bottom: 25px; outline: none; text-align: center; letter-spacing: 6px; box-sizing: border-box;">
         
-<button onclick="checkPassword()" style="width: 100%; padding: 18px; background: linear-gradient(90deg, #6a5acd, #db7093); border: none; border-radius: 15px; color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 25px rgba(106, 90, 205, 0.3); letter-spacing: 2px;">
-    解鎖數位王國資產
-</button>
+        <button onclick="checkPassword()" style="width: 100%; padding: 16px; background: linear-gradient(90deg, #00d2ff, #3a7bd5); border: none; border-radius: 12px; color: #fff; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3); letter-spacing: 2px;">
+            解鎖數位王國資產
+        </button>
+
+        <p style="margin-top: 20px; color: #666; font-size: 13px; line-height: 1.6; font-weight: 500;">
+            本區塊僅供「非專屬技術授權」之企業主存取。<br>
+            若需取得臨時授權碼，請洽詢<span style="color: #3a7bd5; font-weight: bold;">「活力美髮學堂」</span>。
+        </p>
+    </div>
+
+    <div style="margin-top: 50px; display: flex; justify-content: center; gap: 30px; position: relative; z-index: 1;">
+        <div style="font-size: 14px; color: #3a7bd5; font-weight: bold; opacity: 0.7;">流量獲客系統</div>
+        <div style="font-size: 14px; color: #3a7bd5; font-weight: bold; opacity: 0.7;">庫存利潤管理</div>
+        <div style="font-size: 14px; color: #3a7bd5; font-weight: bold; opacity: 0.7;">人才槓桿模組</div>
+    </div>
+</div>
 
 <script>
 function checkPassword() {
-    // 這裡設定您想要的密碼
     const correctPassword = "100"; 
+    const userInput = document.getElementById('passInput').value;
     
-    // 取得使用者輸入的內容
-    const userInput = document.querySelector('input[type="password"]').value;
+    // 根據您的 GitHub 截圖路徑設定跳轉連結
+    const baseUrl = "https://pollyyeh61-eng.github.io/transfer/";
 
     if (userInput === correctPassword) {
         alert("驗證成功！正在進入數位王國戰略總部...");
-        // 驗證成功後要跳轉的網址，例如您的歡迎頁面
-        // window.location.href = "https://您的官網/welcome-page"; 
+        // 跳轉至 index.html 或 歡迎頁面.html (URL 編碼處理中文檔名)
+        window.location.href = baseUrl + encodeURIComponent("歡迎頁面.html"); 
     } else {
         alert("授權碼錯誤，請洽詢活力美髮學堂。");
     }
 }
 </script>
-            解鎖數位王國資產
-        </button>
-
-        <p style="margin-top: 25px; color: #777; font-size: 13px; line-height: 1.6; font-weight: 500;">
-            本區塊僅供「非專屬技術授權」之企業主存取。<br>
-            若需取得臨時授權碼，請洽詢<span style="color: #db7093; font-weight: bold;">「活力美髮學堂」</span>。
-        </p>
-    </div>
-
-    <div style="margin-top: 60px; display: flex; justify-content: center; gap: 40px; position: relative; z-index: 1;">
-        <div style="font-size: 14px; color: #4b0082; font-weight: bold; opacity: 0.6;">流量獲客系統</div>
-        <div style="font-size: 14px; color: #4b0082; font-weight: bold; opacity: 0.6;">庫存利潤管理</div>
-        <div style="font-size: 14px; color: #4b0082; font-weight: bold; opacity: 0.6;">人才槓桿模組</div>
-    </div>
-</div>
