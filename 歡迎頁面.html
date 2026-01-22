@@ -1,41 +1,83 @@
-<div style="font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background: linear-gradient(135deg, rgba(255, 245, 250, 0.95) 0%, rgba(240, 245, 255, 0.95) 50%, rgba(245, 240, 255, 0.95) 100%); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 2px solid rgba(255, 255, 255, 0.8); border-radius: 40px; padding: 60px 40px; margin: 30px auto; max-width: 850px; text-align: center; box-shadow: 0 30px 80px rgba(135, 206, 250, 0.2);">
-    
-    <div style="display: inline-block; padding: 8px 25px; background: linear-gradient(90deg, #db7093, #6a5acd); border-radius: 50px; color: #ffffff; font-size: 15px; font-weight: bold; letter-spacing: 3px; margin-bottom: 35px; box-shadow: 0 10px 20px rgba(106, 90, 205, 0.2);">
-        V-SYSTEM DIGITAL KINGDOM
-    </div>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root { 
+            --p: #00d2ff; 
+            --s: #3a7bd5; 
+            --font-main: 18px; 
+            --font-title: 20px; 
+            --bg-soft: #f0f7ff; 
+        }
+        body { 
+            margin: 0; padding: 40px; background: var(--bg-soft); 
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
+            color: #2c3e50; line-height: 1.8; 
+            display: flex; justify-content: center; align-items: center; min-height: 80vh;
+        }
+        
+        /* 核心內容卡片 - 沿用 5.利潤拆解 的風格 */
+        .hero-section { 
+            background: white; border-radius: 40px; padding: 60px 50px; 
+            text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.06); 
+            max-width: 800px; width: 100%; border: 1px solid rgba(255,255,255,0.8);
+        }
 
-    <h1 style="color: #4b0082; font-size: 36px; line-height: 1.4; margin-bottom: 25px; text-shadow: 0 0 15px rgba(255,255,255,0.2);">
-        歡迎進入美髮王國的<br>
-        <span style="color: #b59a5d;">數位戰略總部</span>
-    </h1>
+        /* 藍色藥丸標籤 */
+        .blue-pill { 
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5); color: white; 
+            padding: 12px 45px; border-radius: 50px; display: inline-block; 
+            font-size: 16px; font-weight: bold; letter-spacing: 3px;
+            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.3); margin-bottom: 30px; 
+            text-transform: uppercase;
+        }
 
-    <div style="max-width: 680px; margin: 0 auto; text-align: left; background: rgba(255, 255, 255, 0.4); padding: 40px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.6);">
-        
-        <p style="color: #333; font-size: 20px; font-weight: bold; margin-bottom: 25px; border-left: 4px solid #b59a5d; padding-left: 15px;">
-            致 具備遠見的策略夥伴：
-        </p>
-        
-        <p style="color: #444; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-            這扇門後，並非僅是 10 支 App 程式，而是我將 <span style="color: #db7093; font-weight: bold; font-size: 20px;">三十年美業實戰靈魂</span> 與 <span style="color: #6a5acd; font-weight: bold; font-size: 20px;">數位自動化邏輯</span> 深度封裝後的商業實相。
-        </p>
-        
-        <p style="color: #444; font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-            在傳統美業仍深陷「客源焦虑」與「庫存內耗」的今日，我們已經預見並建構了從 <span style="color: #4682b4; font-weight: bold;">主動流量開發</span> 到 <span style="color: #4b0082; font-weight: bold;">極致利潤控管</span> 的完整閉環。
-        </p>
-        
-        <blockquote style="border-left: 5px solid #b59a5d; background: rgba(181, 154, 93, 0.05); padding: 20px 25px; margin: 30px 0; color: #222; font-size: 20px; font-weight: bold; line-height: 1.6; border-radius: 0 15px 15px 0;">
-            「這套系統的使命，是讓經營回歸精準數據，讓人才得以無限槓桿。」
-        </blockquote>
-    </div>
+        h1 { 
+            font-size: 36px; font-weight: 900; color: #1a2a3a; 
+            margin: 15px 0; letter-spacing: 1px;
+        }
 
-    <div style="margin-top: 50px;">
-        <p style="color: #666; font-size: 16px; font-weight: 500; margin-bottom: 25px;">
-            即將為您展示：如何將每一克耗材轉化為可見利潤
-        </p>
-        <div style="display: flex; justify-content: center;">
-            <div style="background: linear-gradient(90deg, #b59a5d, #d4bc82); color: #ffffff; padding: 18px 50px; border-radius: 12px; font-weight: bold; font-size: 20px; box-shadow: 0 15px 30px rgba(181, 154, 93, 0.3); cursor: pointer; border: none; letter-spacing: 2px;">
-                探索 V-System 商業閉環
-            </div>
+        .welcome-desc { 
+            font-size: var(--font-title); color: #3a7bd5; 
+            font-weight: 600; margin-bottom: 30px; 
+        }
+
+        .content-card { 
+            background: #fcfdfe; border-radius: 30px; padding: 35px; 
+            border: 1px solid #eef2f6; text-align: left;
+            margin-top: 20px;
+        }
+
+        p { font-size: var(--font-main); color: #5a6a85; margin: 15px 0; }
+        
+        .highlight { 
+            color: #1a2a3a; font-weight: 900; border-bottom: 3px solid #f9d423; 
+        }
+
+        /* 底部裝飾 */
+        .footer-tag {
+            margin-top: 40px; font-size: 14px; color: #cbd5e0;
+            letter-spacing: 2px; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section">
+        <div class="blue-pill">Welcome to V-System</div>
+        <h1>數位王國戰略總部</h1>
+        <p class="welcome-desc">技術授權 · 數位經營 · 規模增長</p>
+
+        <div class="content-card">
+            <p>歡迎進入 <span class="highlight">V-System 戰略指揮系統</span>。本系統旨在為美髮經營者提供完整的數位轉型閉環邏輯。</p>
+            <p>透過 <span class="highlight">10 支經營 App</span> 的深度佈局，我們將傳統技術與數位邏輯焊接，協助您建立邊際成本趨近於零的自動化獲利引擎。</p>
+            <p>請點選左側選單，開始瀏覽各項戰略資產清單與利潤預估。</p>
         </div>
+
+        <div class="footer-tag">ECOSYSTEM ARCHITECTURE © 2026</div>
     </div>
-</div>
+
+</body>
+</html>
