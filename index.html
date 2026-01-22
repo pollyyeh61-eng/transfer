@@ -15,114 +15,91 @@
         }
 
         body {
-            margin: 0; padding: 0; 
-            background: var(--bg);
+            margin: 0; padding: 0; background: var(--bg);
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            color: #2c3e50;
-            overflow: hidden; /* 防止主窗口捲動，由容器內部捲動 */
+            color: #2c3e50; overflow: hidden;
         }
 
-        /* --- 登入解鎖層 (全螢幕蓋板) --- */
+        /* --- 登入解鎖層 --- */
         #login-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             display: flex; align-items: center; justify-content: center;
-            z-index: 9999; transition: opacity 0.5s ease;
+            z-index: 9999;
         }
 
         .login-card {
-            width: 100%; max-width: 400px; padding: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px); border-radius: 30px;
-            box-shadow: 0 25px 50px rgba(0, 210, 255, 0.15);
+            width: 100%; max-width: 400px; padding: 45px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px); border-radius: 35px;
+            box-shadow: 0 30px 60px rgba(0, 210, 255, 0.2);
             text-align: center; border: 1px solid #fff;
         }
 
         input[type="password"] {
-            width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd;
-            font-size: 20px; text-align: center; letter-spacing: 8px; margin: 20px 0;
-            outline: none; box-sizing: border-box;
+            width: 100%; padding: 18px; border-radius: 15px; border: 1px solid #ddd;
+            font-size: 22px; text-align: center; letter-spacing: 8px; margin: 25px 0;
+            outline: none; box-sizing: border-box; background: #fff;
         }
 
         .login-btn {
-            width: 100%; padding: 16px; border-radius: 12px; border: none;
+            width: 100%; padding: 18px; border-radius: 15px; border: none;
             background: linear-gradient(90deg, var(--p), var(--s));
             color: white; font-size: var(--font-title); font-weight: bold;
-            cursor: pointer; box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
+            cursor: pointer; box-shadow: 0 10px 25px rgba(0, 210, 255, 0.3);
+            transition: 0.3s;
         }
 
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(0, 210, 255, 0.4); }
+
         /* --- 主容器佈局 --- */
-        .dashboard-container {
-            display: flex; height: 100vh; width: 100vw;
-            opacity: 0; transition: opacity 0.8s ease;
+        #dashboard {
+            display: none; /* 初始隱藏，解鎖後改為 flex */
+            height: 100vh; width: 100vw;
         }
 
         /* --- 側面導航欄 --- */
         .sidebar {
-            width: var(--sidebar-width);
-            background: white;
-            border-right: 1px solid #e0e6ed;
-            display: flex; flex-direction: column;
-            padding: 30px 20px;
-            box-shadow: 4px 0 15px rgba(0,0,0,0.02);
-            z-index: 10;
+            width: var(--sidebar-width); background: white;
+            border-right: 1px solid #eef2f6; display: flex; flex-direction: column;
+            padding: 35px 20px; box-shadow: 4px 0 15px rgba(0,0,0,0.02); z-index: 10;
         }
 
         .brand-logo {
-            font-size: 22px; font-weight: 900; 
+            font-size: 24px; font-weight: 900; 
             background: linear-gradient(90deg, var(--p), var(--s));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 40px; text-align: center; letter-spacing: 2px;
+            margin-bottom: 45px; text-align: center; letter-spacing: 3px;
         }
-
-        .nav-menu { flex-grow: 1; }
 
         .nav-item {
-            display: flex; align-items: center;
-            padding: 15px 20px; margin-bottom: 10px;
-            text-decoration: none; color: #606f7b;
-            font-size: 17px; font-weight: 600;
-            border-radius: 12px; transition: 0.3s;
+            display: flex; align-items: center; padding: 16px 22px; margin-bottom: 12px;
+            text-decoration: none; color: #5a6a85; font-size: 17px; font-weight: 600;
+            border-radius: 15px; transition: 0.3s; border: 1px solid transparent;
         }
 
-        .nav-item:hover {
-            background: #f0faff; color: var(--s);
-            transform: translateX(5px);
-        }
+        .nav-item:hover { background: #f0faff; color: var(--s); }
 
         .nav-item.active {
             background: linear-gradient(90deg, var(--p), var(--s));
-            color: white; box-shadow: 0 8px 15px rgba(0, 210, 255, 0.2);
+            color: white; box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
         }
 
         .nav-icon { margin-right: 15px; font-size: 20px; }
 
-        .logout-link {
-            padding: 15px 20px; color: #b8c2cc; text-decoration: none;
-            font-size: 14px; text-align: center; border-top: 1px solid #f0f0f0;
-        }
-
         /* --- 右側內容容器 --- */
-        .main-content {
-            flex-grow: 1; padding: 0; background: var(--bg);
-            display: flex; flex-direction: column;
-        }
-
-        /* 內嵌網頁的容器 */
-        iframe {
-            width: 100%; height: 100%; border: none;
-            background: var(--bg);
-        }
+        .main-content { flex-grow: 1; display: flex; flex-direction: column; background: var(--bg); }
 
         .header-bar {
-            height: 70px; background: white; border-bottom: 1px solid #e0e6ed;
-            display: flex; align-items: center; padding: 0 40px;
-            justify-content: space-between;
+            height: 75px; background: white; border-bottom: 1px solid #eef2f6;
+            display: flex; align-items: center; padding: 0 40px; justify-content: space-between;
         }
 
-        .status-badge {
-            background: #e8f9f1; color: #2ecc71; padding: 5px 15px;
-            border-radius: 20px; font-size: 12px; font-weight: bold;
+        #content-frame { width: 100%; flex-grow: 1; border: none; background: var(--bg); }
+
+        .logout-link {
+            padding: 15px; color: #abbac7; text-decoration: none; font-size: 14px;
+            text-align: center; border-top: 1px solid #f8fafc; margin-top: auto;
         }
     </style>
 </head>
@@ -130,36 +107,36 @@
 
     <div id="login-overlay">
         <div class="login-card">
-            <div style="font-size: 40px; margin-bottom: 10px;">🛡️</div>
-            <h2>戰略總部驗證</h2>
-            <p style="font-size: 14px; color: #888;">請輸入授權碼解鎖數位資產</p>
-            <input type="password" id="passInput" placeholder="••••••••" onkeypress="if(event.key==='Enter') checkPassword()">
-            <button class="login-btn" onclick="checkPassword()">進入系統</button>
+            <div style="font-size: 45px; margin-bottom: 15px;">🛡️</div>
+            <h2 style="margin:0; font-weight:900;">戰略總部驗證</h2>
+            <p style="font-size: 15px; color: #888; margin-top:10px;">V-System 商業閉環資產庫</p>
+            <input type="password" id="passInput" placeholder="請輸入授權碼" onkeypress="if(event.key==='Enter') checkPassword()">
+            <button class="login-btn" onclick="checkPassword()">解鎖並進入總部</button>
         </div>
     </div>
 
-    <div class="dashboard-container" id="dashboard">
+    <div id="dashboard">
         <aside class="sidebar">
-            <div class="brand-logo">V-SYSTEM CENTER</div>
+            <div class="brand-logo">V-SYSTEM</div>
             
-            <nav class="nav-menu">
-                <a href="javascript:void(0)" class="nav-item active" onclick="loadPage(this, '歡迎頁面.html')">
+            <nav style="flex-grow: 1;">
+                <a href="javascript:void(0)" id="default-nav" class="nav-item active" onclick="loadPage(this, '歡迎頁面.html')">
                     <span class="nav-icon">🏠</span> 歡迎首頁
                 </a>
                 <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '1-10 支 App 生態佈局.html')">
                     <span class="nav-icon">🌐</span> App 生態佈局
                 </a>
                 <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '2經營策略.html')">
-                    <span class="nav-icon">📈</span> 2. 經營策略
+                    <span class="nav-icon">📈</span> 經營策略
                 </a>
                 <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '3現金流守護.html')">
-                    <span class="nav-icon">🛡️</span> 3. 守護現金流
+                    <span class="nav-icon">🛡️</span> 現金流守護
                 </a>
                 <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '4閉環邏輯.html')">
-                    <span class="nav-icon">🔄</span> 4. 閉環邏輯
+                    <span class="nav-icon">🔄</span> 閉環邏輯
                 </a>
                 <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '5數位資產技轉利潤拆解預估.html')">
-                    <span class="nav-icon">💰</span> 5. 技轉利潤
+                    <span class="nav-icon">💰</span> 利潤拆解
                 </a>
             </nav>
 
@@ -168,10 +145,12 @@
 
         <main class="main-content">
             <div class="header-bar">
-                <div id="current-title" style="font-weight: bold; font-size: 18px;">戰略儀表板</div>
-                <div class="status-badge">● 系統授權已啟用</div>
+                <div id="current-title" style="font-weight: 900; font-size: 18px; color: var(--s);">歡迎首頁</div>
+                <div style="background: #e8f9f1; color: #2ecc71; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: bold;">
+                    ● 戰略鏈結已加密
+                </div>
             </div>
-            <iframe id="content-frame" src="歡迎頁面.html"></iframe>
+            <iframe id="content-frame"></iframe>
         </main>
     </div>
 
@@ -195,11 +174,14 @@
         }
 
         function showDashboard() {
-            document.getElementById('login-overlay').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('login-overlay').style.display = 'none';
-                document.getElementById('dashboard').style.opacity = '1';
-            }, 500);
+            document.getElementById('login-overlay').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'flex';
+            
+            // 重要：解鎖後立即載入歡迎頁面
+            const frame = document.getElementById('content-frame');
+            if (!frame.src || frame.src === "about:blank") {
+                frame.src = baseUrl + encodeURIComponent('歡迎頁面.html');
+            }
         }
 
         function loadPage(element, fileName) {
@@ -207,10 +189,11 @@
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
 
-            // 更新標題
-            document.getElementById('current-title').innerText = element.innerText.replace(/[🏠🌐📈🛡️🔄💰]/g, '').trim();
+            // 更新頂部標題文字
+            const titleText = element.innerText.replace(/[🏠🌐📈🛡️🔄💰]/g, '').trim();
+            document.getElementById('current-title').innerText = titleText;
 
-            // 載入頁面 (處理中文路徑)
+            // 載入頁面
             document.getElementById('content-frame').src = baseUrl + encodeURIComponent(fileName);
         }
 
@@ -221,4 +204,3 @@
     </script>
 </body>
 </html>
-
