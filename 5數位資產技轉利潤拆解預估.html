@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數位資產技轉利潤拆解預估 - 強化發光精緻版</title>
+    <style>
+        :root {
+            /* 炫彩主色調 */
+            --p: #00d2ff; 
+            --s: #3a7bd5; 
+            --glow-color: rgba(0, 210, 255, 0.4);
+            /* 嚴格遵守 18-20 黃金比例 */
+            --font-main: 18px; 
+            --font-title: 20px; 
+        }
+
+        body {
+            margin: 0; padding: 0; background: #ffffff;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            color: #2c3e50; /* 強化內文字對比度 */
+            line-height: 1.6;
+        }
+
+        /* --- 頂部炫彩區 --- */
+        .hero-section {
+            padding: 60px 20px 100px; 
+            background: linear-gradient(135deg, #f0faff 0%, #e0f2f1 100%);
+            text-align: center; position: relative;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .top-tag {
+            display: inline-block; 
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            color: white; padding: 6px 25px; border-radius: 50px;
+            font-size: 14px; font-weight: bold; letter-spacing: 2px;
+            margin-bottom: 20px; text-transform: uppercase;
+            box-shadow: 0 4px 15px var(--glow-color);
+        }
+
+        h1 { font-size: 32px; font-weight: 900; color: #222; margin: 0 0 15px 0; }
+        .goal-text { font-size: var(--font-title); color: #3a7bd5; font-weight: 700; }
+
+        .container { max-width: 950px; margin: -40px auto 0; padding: 0 20px 60px; position: relative; z-index: 10; }
+
+        .section-header-tag {
+            display: inline-block; 
+            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+            color: white; padding: 8px 30px; border-radius: 50px;
+            font-size: var(--font-title); font-weight: bold; margin: 40px 0 20px 0;
+            box-shadow: 0 4px 12px rgba(58, 123, 213, 0.3);
+        }
+
+        /* --- 強化卡片發光效果 --- */
+        .content-card {
+            background: #ffffff; padding: 25px; border-radius: 20px;
+            border: 1px solid #eef2f3; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05); /* 初始淡陰影 */
+            margin-bottom: 20px; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .content-card:hover {
+            transform: translateY(-8px);
+            /* 炫彩發光效果升級：藍青色外發光 */
+            box-shadow: 0 15px 45px rgba(0, 210, 255, 0.25), 
+                        0 0 25px rgba(58, 123, 213, 0.15);
+            border-color: #00d2ff;
+        }
+
+        .content-card h3 { font-size: var(--font-title); color: #3a7bd5; margin: 0 0 12px 0; font-weight: 900; }
+        
+        /* 內文字加深，確保清晰度 */
+        .content-card p { font-size: var(--font-main); color: #2c3e50; margin: 0; font-weight: 400; }
+
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+
+        /* --- 表格區域 --- */
+        .table-box { background: white; border-radius: 20px; padding: 10px; border: 1px solid #f0f0f0; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; font-size: var(--font-main); color: #2c3e50; }
+        th { text-align: left; padding: 15px; color: #3a7bd5; border-bottom: 2px solid #e0f2f1; }
+        td { padding: 15px; border-bottom: 1px solid #f5f5f5; }
+        .subtotal-row { background: #f0faff; font-weight: 900; color: #2c3e50; }
+
+        /* --- 營業漏斗炫彩卡 --- */
+        .funnel-card {
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            color: white; padding: 40px; border-radius: 30px; text-align: center;
+            margin-top: 30px; 
+            box-shadow: 0 20px 50px rgba(0, 210, 255, 0.3);
+        }
+        .funnel-card h2 { font-size: 24px; margin-bottom: 25px; letter-spacing: 2px; }
+        .funnel-item { 
+            font-size: var(--font-main); margin-bottom: 15px; 
+            padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.2);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .funnel-result { font-size: 30px; font-weight: 900; color: #ffffff; margin-top: 25px; display: block; }
+
+        .ring-label { font-size: var(--font-title); font-weight: 900; color: #222; margin: 30px 0 15px 0; padding-left: 15px; border-left: 6px solid #00d2ff; }
+        
+        footer { text-align: center; padding: 60px 0; color: #bbb; font-size: 13px; }
+
+        strong { color: #3a7bd5; }
+        .funnel-card strong { color: #ffffff; }
+    </style>
+</head>
+<body>
+
+<section class="hero-section">
+    <div class="top-tag">2026 Profit Simulation</div>
+    <h1>數位資產技轉利潤拆解預估</h1>
+    <div class="goal-text">合作目標：透過 10 支經營 App 結合實體/線上課程，建立美業經營閉環。</div>
+</section>
+
+<div class="container">
+    <div class="section-header-tag">短期：系統套裝銷售收益</div>
+    <div class="ring-label">回收技轉成本階段</div>
+    <p style="font-size: var(--font-main); color: #2c3e50; margin-bottom: 20px;">針對現有學員或連鎖店進行「數位化升級」的直接收入。</p>
+    
+    <div class="table-box">
+        <table>
+            <thead>
+                <tr><th>收益項目</th><th>建議定價</th><th>預期規模</th><th>預估營收 (NTD)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Montor 2.0 經營組合包</strong><br><small>(含 10 支 App 使用權)</small></td><td>$20,000</td><td>50 間沙龍</td><td>$1,000,000</td></tr>
+                <tr><td><strong>數位辦公室導入顧問費</strong></td><td>$5,000</td><td>30 位經營者</td><td>$150,000</td></tr>
+                <tr class="subtotal-row"><td colspan="3" style="text-align:right;">短期回收小計</td><td>$1,150,000</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="content-card" style="border-left: 6px solid #00d2ff;">
+        <p><strong>博弈重點：</strong>光是第一波導入 50 個點，您的技轉費（100 萬）就已經全數回收。</p>
+    </div>
+
+    <div class="section-header-tag">中期：課程與平台槓桿收益</div>
+    <div class="ring-label">利潤爆發期</div>
+    <div class="card-grid">
+        <div class="content-card">
+            <h3>線上槓桿經營課</h3>
+            <p>預估售價：<strong>$8,800 / 人</strong><br>規模預估：每季 100 人報名 (透過 App 導流)<br>預估年營收：<strong>$3,520,000</strong></p>
+        </div>
+        <div class="content-card">
+            <h3>講師實體課提成</h3>
+            <p>透過 App 進行學員關卡管理與分潤計算。<br>預估年抽成收益：<strong>$500,000 - $800,000</strong></p>
+        </div>
+    </div>
+
+    <div class="section-header-tag">長期：數據資產與生態稅</div>
+    <div class="ring-label">永續經營階段</div>
+    <div class="card-grid">
+        <div class="content-card">
+            <h3>系統年費 (SaaS 模式)</h3>
+            <p>第二年起續約費：<strong>$6,000 / 年</strong><br>若累積 300 個使用點：年被動收入 <strong>$1,800,000</strong></p>
+        </div>
+        <div class="content-card">
+            <h3>美學平台流量價值</h3>
+            <p>App 內部的耗材採購、廠商對接分潤。<br>預估生態提成：<strong>營收之 3-5%</strong></p>
+        </div>
+    </div>
+
+    <div class="funnel-card">
+        <h2>營業漏斗最終成交結果</h2>
+        <div class="funnel-item">短期：100% 回收成本並建立 50+ 基礎節點</div>
+        <div class="funnel-item">中期：利用課程實現無限複製，利潤突破 400 萬</div>
+        <div class="funnel-item">長期：累積 300 點規模，實現每年穩定生態稅收</div>
+       <strong class="funnel-result">下單成交閉環：工具留存 → 數據依賴 → 永續年費</strong>
+    </div>
+
+    <footer>V-SYSTEM ECOSYSTEM ARCHITECTURE © 2026</footer>
+</div>
+
+</body>
+</html>

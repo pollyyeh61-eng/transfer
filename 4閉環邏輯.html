@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程 App 閉環邏輯 - 完整高端版</title>
+    <style>
+        :root {
+            --p: #6a5acd; /* 藍紫色 */
+            --s: #db7093; /* 櫻桃粉 */
+            --font-main: 18px; 
+            --font-title: 20px; 
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- 頂部底板：設計感強化區 --- */
+        .hero-section {
+            position: relative;
+            padding: 120px 20px 200px;
+            background: linear-gradient(135deg, #fdfbff 0%, #f5f7ff 100%);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* 流動漸層光斑 */
+        .glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 1;
+            opacity: 0.12;
+            animation: move 25s infinite alternate ease-in-out;
+        }
+        .glow-1 { background: var(--p); top: -150px; left: -100px; }
+        .glow-2 { background: var(--s); bottom: 50px; right: -100px; animation-delay: -12s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(120px, 80px); }
+        }
+
+        /* 不規則波浪底座 */
+        .wave-box {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            line-height: 0;
+            z-index: 5;
+        }
+        .wave-box svg {
+            fill: #ffffff;
+            width: 100%;
+            height: 120px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .tag-box {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--p), var(--s));
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(106, 90, 205, 0.15);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 0 0 25px 0;
+            color: #1a1a1a;
+            letter-spacing: 0.15em;
+        }
+
+        .manifesto {
+            font-size: var(--font-title); /* 20px */
+            color: #5a4db3;
+            line-height: 2.2;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- 內文區塊 --- */
+        .container {
+            max-width: 1000px;
+            margin: -70px auto 0; 
+            padding: 0 20px 100px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .ring-section { margin-bottom: 80px; }
+
+        .ring-title {
+            display: inline-block;
+            font-size: var(--font-title); /* 20px */
+            font-weight: 900;
+            padding: 12px 30px;
+            color: white;
+            background: linear-gradient(90deg, var(--p), var(--s));
+            border-radius: 50px;
+            margin-bottom: 35px;
+            box-shadow: 0 12px 25px rgba(106, 90, 205, 0.18);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .app-card {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.04);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--s);
+            box-shadow: 0 20px 45px rgba(106, 90, 205, 0.1);
+        }
+
+        .app-card h3 {
+            font-size: var(--font-title); /* 20px */
+            color: var(--s);
+            margin: 0 0 15px 0;
+            font-weight: 900;
+        }
+
+        .app-card p {
+            font-size: var(--font-main); /* 18px */
+            color: #555;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .app-card::after {
+            content: '';
+            position: absolute;
+            top: 25px; right: 25px;
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.04), rgba(219, 112, 147, 0.04));
+            border-radius: 50%;
+        }
+
+        footer {
+            text-align: center;
+            padding-bottom: 80px;
+            color: #bbb;
+            letter-spacing: 5px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero-section">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="hero-content">
+        <div class="tag-box">V-System Architecture</div>
+        <h1>課程 App 閉環邏輯</h1>
+        <div class="manifesto">
+            這套系統不只是單純的工具，它是一個從<br>
+            獲客、經營、留才到數據權威的完整生態。
+        </div>
+    </div>
+    <div class="wave-box">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
+        </svg>
+    </div>
+</section>
+
+<div class="container">
+    <div class="ring-section">
+        <div class="ring-title">第一環：流量與獲客</div>
+        <div class="card-grid">
+            <div class="app-card">
+                <h3>美學入口平台</h3>
+                <p>建立品牌的數位總部，讓新客在進入系統的第一秒就感受到品牌的高度。</p>
+            </div>
+            <div class="app-card">
+                <h3>銷售開發</h3>
+                <p>主動式的數位開發工具，將路過客與網路流量轉化為實際的客戶名單。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ring-section">
+        <div class="ring-title">第二環：極致營運與標準化</div>
+        <div class="card-grid">
+            <div class="app-card">
+                <h3>客戶預約</h3>
+                <p>24 小時自動化排程，減少人力溝通成本，確保店鋪坪效最大化。</p>
+            </div>
+            <div class="app-card">
+                <h3>銷售收銀</h3>
+                <p>將現場服務即時轉化為財務數據，確保每一筆技術服務都進入系統記錄。</p>
+            </div>
+            <div class="app-card">
+                <h3>庫存管理</h3>
+                <p>精確追蹤藥水、染膏等耗材，將美髮業常見的「隱性浪費」轉化為利潤。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ring-section">
+        <div class="ring-title">第三環：客戶終身價值鎖定</div>
+        <div class="card-grid">
+            <div class="app-card">
+                <h3>客戶管理 (CRM)</h3>
+                <p>建立深層的客戶圖像，讓設計師能精準掌握客戶的消費偏好。</p>
+            </div>
+            <div class="app-card">
+                <h3>會員卡 & 升等集點</h3>
+                <p>透過儲值與遊戲化升等機制，建立客戶的「離開成本」，大幅提升回流率。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ring-section">
+        <div class="ring-title">第四環：人才培訓與財富自由</div>
+        <div class="card-grid">
+            <div class="app-card">
+                <h3>分潤計算</h3>
+                <p>系統自動結算，解決傳統美髮業「帳目不清、分潤不明」的互信問題。</p>
+            </div>
+            <div class="app-card">
+                <h3>學員關卡</h3>
+                <p>以遊戲化的關卡，提昇學習動力。</p>
+            </div>
+            <div class="app-card">
+                <h3>經營課程 </h3>
+                <p>這是系統的靈魂，將技術教材轉化為數位關卡，讓學員在升級過程中與系統深度綁定，實現「教父級」的系統管理。</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>V-SYSTEM ECOSYSTEM ARCHITECTURE © 2026</footer>
+</div>
+
+</body>
+</html>

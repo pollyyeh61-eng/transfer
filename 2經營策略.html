@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>經營策略：數位閉環邏輯</title>
+    <style>
+        :root {
+            /* 調整為原本的夢幻發光色 */
+            --primary-glow: rgba(219, 112, 147, 0.4);
+            --secondary-glow: rgba(135, 206, 250, 0.4);
+            --accent-gold: #b59a5d;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 245, 250, 1) 0%, rgba(240, 245, 255, 1) 50%, rgba(245, 240, 255, 1) 100%);
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 30px 80px rgba(135, 206, 250, 0.15);
+            padding: 50px 40px;
+        }
+
+        h1 {
+            text-align: center;
+            background: linear-gradient(90deg, #6a5acd, #db7093);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 38px;
+            font-weight: 900;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #6a5acd;
+            font-size: 26px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: "";
+            width: 8px;
+            height: 28px;
+            background: var(--accent-gold);
+            margin-right: 12px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(181, 154, 93, 0.4);
+        }
+
+        /* --- 戰略矩陣：調回夢幻炫彩配色 --- */
+        .strategy-table-wrapper {
+            overflow-x: auto;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 8px;
+            box-shadow: 0 15px 40px rgba(135, 206, 250, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        th {
+            /* 標題調回炫彩漸層 */
+            background: linear-gradient(90deg, #db7093, #6a5acd);
+            color: white;
+            padding: 18px;
+            font-size: 18px;
+            border-radius: 12px;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(106, 90, 205, 0.2);
+        }
+
+        td {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            font-size: 17px;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* 階段欄位調回柔和色 */
+        td:first-child { 
+            border-left: 1px solid rgba(255, 255, 255, 0.5); 
+            border-radius: 15px 0 0 15px; 
+            font-weight: 900; 
+            color: #6a5acd; 
+        }
+        td:last-child { 
+            border-right: 1px solid rgba(255, 255, 255, 0.5); 
+            border-radius: 0 15px 15px 0; 
+        }
+
+        tr:hover td {
+            background: white;
+            box-shadow: 0 8px 20px rgba(135, 206, 250, 0.15);
+            transition: 0.3s;
+        }
+
+        /* --- 核心價值卡片：保留發光與精緻尺寸 --- */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .integration-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 30px;
+            border: 1px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            transition: 0.3s;
+        }
+
+        .item-1 { border-left: 6px solid #db7093; box-shadow: 0 0 20px rgba(219, 112, 147, 0.1); }
+        .item-2 { border-left: 6px solid #6a5acd; box-shadow: 0 0 20px rgba(106, 90, 205, 0.1); }
+        .item-3 { border-left: 6px solid #b59a5d; box-shadow: 0 0 20px rgba(181, 154, 93, 0.1); }
+
+        .integration-item:hover { transform: translateY(-5px); background: white; }
+        .item-1:hover { box-shadow: 0 12px 35px rgba(219, 112, 147, 0.3); }
+        .item-2:hover { box-shadow: 0 12px 35px rgba(106, 90, 205, 0.3); }
+        .item-3:hover { box-shadow: 0 12px 35px rgba(181, 154, 93, 0.3); }
+
+        .item-title { font-size: 20px; font-weight: bold; margin-bottom: 12px; }
+        .item-desc { font-size: 17px; line-height: 1.7; color: #555; }
+
+        .value-box {
+            background: rgba(249, 250, 251, 0.8);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+            font-size: 17px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 35px 20px; }
+            h1 { font-size: 30px; }
+            .item-desc, .value-box, td, th { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>經營策略：數位閉環邏輯</h1>
+
+    <h2>戰略佈局矩陣</h2>
+    <div class="strategy-table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>階段</th>
+                    <th>媒介</th>
+                    <th>角色</th>
+                    <th>核心動作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>導流</td>
+                    <td>直式影片</td>
+                    <td>業務員</td>
+                    <td>吸引想變強的學員</td>
+                </tr>
+                <tr>
+                    <td>養線</td>
+                    <td>Mentor 1.0 App</td>
+                    <td>體驗中心</td>
+                    <td>展示數位學習價值</td>
+                </tr>
+                <tr>
+                    <td>收口</td>
+                    <td>獨立收銀頁</td>
+                    <td>自動櫃員機</td>
+                    <td>賣出 2.0 課程利潤</td>
+                </tr>
+                <tr>
+                    <td>升級</td>
+                    <td>官網</td>
+                    <td>戰略總部</td>
+                    <td>引導理解平台與顧問價值</td>
+                </tr>
+                <tr>
+                    <td>成交</td>
+                    <td>面談 / 合約</td>
+                    <td>核心業務</td>
+                    <td>簽下平台設計或顧問大單</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>核心價值焊接點</h2>
+    <div class="integration-grid">
+        <div class="integration-item item-1">
+            <h4 class="item-title" style="color:#db7093;">✦ 技術與平台的對接</h4>
+            <p class="item-desc">這不是普通的 App，而是為美髮師「邊看邊做」量身打造的專用容器。</p>
+            <div class="value-box">價值：將「動作邏輯」硬核轉化為「功能邏輯」。</div>
+        </div>
+
+        <div class="integration-item item-2">
+            <h4 class="item-title" style="color:#6a5acd;">✦ 教育與經營的對接</h4>
+            <p class="item-desc">內建升級路徑，透過數據捕捉瓶頸，實現自動化導流。</p>
+            <div class="value-box">價值：將「教育」變成長期「顧問諮詢」的入口。</div>
+        </div>
+
+        <div class="integration-item item-3">
+            <h4 class="item-title" style="color:#b59a5d;">✦ 通路與收銀的對接</h4>
+            <p class="item-desc">主動流量收口系統，確保每一分流量都能在閉環內即時變現。</p>
+            <div class="value-box">價值：零延遲完成「收銀、開票、開課」。</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

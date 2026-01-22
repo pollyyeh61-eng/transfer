@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-System 10 支 App 生態佈局</title>
+    <style>
+        /* 基礎設定 */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, rgba(255, 245, 250, 1) 0%, rgba(240, 245, 255, 1) 50%, rgba(245, 240, 255, 1) 100%);
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1100px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            box-shadow: 0 40px 100px rgba(135, 206, 250, 0.2);
+            overflow: hidden;
+        }
+
+        /* 內容內距調整 */
+        .content-padding {
+            padding: 60px 50px;
+        }
+
+        /* 標題設計 */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .header h1 {
+            background: linear-gradient(90deg, #4b0082, #db7093);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 5px;
+            margin: 0 0 15px 0;
+        }
+
+        /* 階段標題 */
+        .phase-title {
+            display: inline-block;
+            padding: 12px 35px;
+            background: linear-gradient(90deg, #6a5acd, #db7093);
+            color: white;
+            border-radius: 50px;
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(106, 90, 205, 0.2);
+        }
+
+        /* App 網格系統 */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 電腦版三欄 */
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .app-card {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 35px 25px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+        .app-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .app-number { color: #db7093; font-weight: 900; font-size: 16px; display: block; margin-bottom: 8px; }
+        .app-name { color: #4b0082; font-size: 24px; font-weight: 900; display: block; margin-bottom: 15px; }
+        .app-detail { font-size: 18px; line-height: 1.8; color: #444; }
+        .highlight { color: #db7093; font-weight: bold; }
+
+        /* --- 手機版尺寸調整 --- */
+        @media (max-width: 768px) {
+            .content-padding {
+                padding: 40px 20px;
+            }
+            .header h1 {
+                font-size: 32px;
+            }
+            .phase-title {
+                font-size: 18px;
+                padding: 10px 25px;
+                width: 100%; /* 手機版階段標題撐滿 */
+                box-sizing: border-box;
+                text-align: center;
+            }
+            .app-grid {
+                grid-template-columns: 1fr; /* 手機版單欄 */
+            }
+            .app-card {
+                padding: 30px;
+            }
+            .app-name {
+                font-size: 22px;
+            }
+            .app-detail {
+                font-size: 17px; /* 手機版字體稍微微調以防太擁擠 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="content-padding">
+        
+        <div class="header">
+            <h1>V-System 生態佈局</h1>
+            <p style="color: #6a5acd; font-weight: bold; font-size: 18px;">30年美業實戰 × 數位自動化</p>
+        </div>
+
+        <div class="phase-section">
+            <div class="phase-title">第一階段：數位流量門戶</div>
+            <div class="app-grid">
+                <div class="app-card">
+                    <span class="app-number">APP 01</span>
+                    <span class="app-name">美學入口平台</span>
+                    <div class="app-detail">
+                        <span class="highlight">品牌數位總部：</span> AI 髮型模擬與品牌故事，建立「第一眼」專業權威。
+                    </div>
+                </div>
+                <div class="app-card">
+                    <span class="app-number">APP 02</span>
+                    <span class="app-name">銷售開發系統</span>
+                    <div class="app-detail">
+                        <span class="highlight">主動掃描儀：</span> 透過數據對接精準獲客，將流量<span class="highlight">私域化</span>。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-section">
+            <div class="phase-title">第二階段：極致營運中樞</div>
+            <div class="app-grid">
+                <div class="app-card">
+                    <span class="app-number">APP 03</span>
+                    <span class="app-name">自動預約系統</span>
+                    <div class="app-detail">
+                        <span class="highlight">24H 接單：</span> 自動排程減少人力成本。
+                    </div>
+                </div>
+                <div class="app-card">
+                    <span class="app-number">APP 04</span>
+                    <span class="app-name">銷售收銀</span>
+                    <div class="app-detail">
+                        <span class="highlight">實時財務：</span> 每筆服務轉為利潤報告，同步會員系統。
+                    </div>
+                </div>
+                <div class="app-card">
+                    <span class="app-number">APP 05</span>
+                    <span class="app-name">精確庫存管理</span>
+                    <div class="app-detail">
+                        <span class="highlight">現金止血：</span> 過量與短缺<span class="highlight">雙向提醒</span>，將損耗轉回淨利。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align:center; color:#db7093; font-weight:bold; font-size: 20px;">... 更多核心系統解鎖中 ...</p>
+
+    </div>
+</div>
+
+</body>
+</html>
