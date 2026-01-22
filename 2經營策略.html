@@ -2,29 +2,186 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        :root { --p: #00d2ff; --s: #3a7bd5; --font-main: 18px; --font-title: 20px; }
-        body { margin: 0; padding: 40px; background: #f0f7ff; font-family: 'PingFang TC', sans-serif; color: #2c3e50; }
-        .hero-section { background: white; border-radius: 40px; padding: 50px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
-        .blue-pill { background: linear-gradient(90deg, #00d2ff, #3a7bd5); color: white; padding: 10px 30px; border-radius: 50px; display: inline-block; font-size: 16px; font-weight: bold; margin-bottom: 25px; }
-        h1 { font-size: 32px; font-weight: 900; margin-bottom: 20px; }
-        .content-card { background: white; border-radius: 30px; padding: 40px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-        .section-tag { border-left: 5px solid #00d2ff; padding-left: 15px; color: #3a7bd5; font-size: var(--font-title); font-weight: 900; margin: 30px 0 15px; }
-        p { font-size: var(--font-main); color: #5a6a85; line-height: 1.8; }
+        :root { 
+            --p: #00d2ff; 
+            --s: #3a7bd5; 
+            --font-main: 18px; 
+            --font-title: 20px; 
+            --bg-soft: #f0f7ff; 
+        }
+        body { 
+            margin: 0; padding: 40px; background: var(--bg-soft); 
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
+            color: #2c3e50; line-height: 1.8; 
+        }
+        .hero-section { 
+            background: white; border-radius: 40px; padding: 50px; 
+            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); 
+            margin-bottom: 40px; 
+        }
+        .blue-pill { 
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5); color: white; 
+            padding: 10px 40px; border-radius: 50px; display: inline-block; 
+            font-size: 16px; font-weight: bold; letter-spacing: 2px;
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3); margin-bottom: 25px; 
+        }
+        h1 { font-size: 32px; font-weight: 900; color: #1a2a3a; margin: 10px 0; }
+        .sub-desc { color: #3a7bd5; font-size: var(--font-title); font-weight: bold; }
+
+        /* --- 核心表格樣式 --- */
+        .content-card { 
+            background: white; border-radius: 35px; padding: 40px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03); margin-bottom: 40px;
+        }
+        .section-title { 
+            font-size: 24px; font-weight: 900; border-left: 6px solid #00d2ff; 
+            padding-left: 15px; margin: 20px 0 30px; color: #1a2a3a; 
+        }
+        table { 
+            width: 100%; border-collapse: separate; border-spacing: 0; 
+            margin-bottom: 30px; border-radius: 20px; overflow: hidden; border: 1px solid #eee; 
+        }
+        th { background: #f8fabb; color: #2c3e50; padding: 20px; font-size: 18px; text-align: center; }
+        td { padding: 20px; background: white; border-bottom: 1px solid #f0f0f0; font-size: var(--font-main); text-align: center; }
+        
+        /* --- 比較與整合區域 --- */
+        .highlight-box { 
+            background: #f0faff; border-radius: 25px; padding: 30px; 
+            margin-bottom: 30px; border: 1px dashed #3a7bd5; 
+        }
+        .versus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .v-item { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+        .v-item strong { color: #3a7bd5; font-size: 20px; display: block; margin-bottom: 10px; }
+
+        .welding-tag {
+            background: #2c3e50; color: #f9d423; padding: 15px; 
+            border-radius: 15px; font-weight: bold; text-align: center; margin: 40px 0;
+            font-size: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .integration-item { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .integration-item h4 { color: #3a7bd5; font-size: 20px; margin-bottom: 10px; }
+        .integration-item ul { list-style: none; padding: 0; }
+        .integration-item li { position: relative; padding-left: 20px; margin-bottom: 5px; font-size: 18px; }
+        .integration-item li::before { content: "•"; color: #00d2ff; position: absolute; left: 0; font-weight: bold; }
     </style>
 </head>
 <body>
+
     <div class="hero-section">
-        <div class="blue-pill">STRATEGY MODEL</div>
-        <h1>2. 經營策略</h1>
+        <div class="blue-pill">STRATEGY & CLOSED LOOP</div>
+        <h1>經營策略：閉環邏輯</h1>
+        <p class="sub-desc">從導流到成交的數位自動化增長模型</p>
     </div>
+
     <div class="content-card">
-        <div class="section-tag">維度一：標準化營運 (SOP)</div>
-        <p>透過數位學院將技術輸出與服務流程標準化，縮短開發期並確保顧客體驗一致性。</p>
-        <div class="section-tag">維度二：數據化決策 (BI)</div>
-        <p>利用 CRM 精準畫像進行分眾行銷，並實時監控耗材與人時產值，優化毛利佔比。</p>
-        <div class="section-tag">維度三：規模化擴張 (Scale)</div>
-        <p>建立透明的分潤機制吸引合夥人，達成單店到連鎖的快速倍增目標。</p>
+        <div class="section-title">一、階段性增長模型</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>階段</th>
+                    <th>媒介</th>
+                    <th>角色</th>
+                    <th>你的動作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight:bold;">導流</td>
+                    <td>直式影片</td>
+                    <td>業務員</td>
+                    <td>吸引想變強的學員。</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold;">養線</td>
+                    <td>Mentor 1.0 (App)</td>
+                    <td>體驗中心</td>
+                    <td>建立數據，展示數位學習價值。</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold;">收口</td>
+                    <td>獨立收銀頁</td>
+                    <td>自動櫃員機</td>
+                    <td>賣出 2.0 課程（週邊利潤）。</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold;">升級</td>
+                    <td>官網</td>
+                    <td>戰略總部</td>
+                    <td>引導學員與講師理解「平台與顧問」價值。</td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold;">成交</td>
+                    <td>面談/合約</td>
+                    <td>核心業務</td>
+                    <td>簽下平台設計或顧問諮詢合約（大單）。</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-title">二、傳統 V.S 數位</div>
+        <div class="versus-grid">
+            <div class="v-item">
+                <strong>傳統模式</strong>
+                每增加一個講師、多開一場課，成本都是線性增長的。
+            </div>
+            <div class="v-item">
+                <strong>數位模式</strong>
+                一旦系統跑通，服務 10 人與 10,000 人的成本幾乎沒差。這就是邊際成本趨近於零的<strong>理工奇蹟</strong>。
+            </div>
+        </div>
     </div>
+
+    <div class="content-card">
+        <div class="section-title">三、市場現狀分析</div>
+        <p>市場上充斥著零散的資源，但缺乏真正的整合者：</p>
+        <div class="integration-item">
+            <h4>1. 網路平台商</h4>
+            <p>懂流量、懂程式，但完全不懂剪刀怎麼拿，做出來的系統冷冰冰，不符合美髮人的操作直覺。</p>
+        </div>
+        <div class="integration-item">
+            <h4>2. 美髮技術大師</h4>
+            <p>手藝絕佳，對數位邏輯一竅不通，課程只能放在 Facebook 社團或 LINE，完全無法規模化。</p>
+        </div>
+        <div class="integration-item">
+            <h4>3. 美髮經營者/教育者</h4>
+            <p>懂店務、懂收徒，但不知道如何把這些經驗轉化為「自動化獲利引擎」。</p>
+        </div>
+        
+        <div class="welding-tag">
+            妳是目前唯一能把這三者「焊接」在一起的人
+        </div>
+    </div>
+
+    <div class="content-card">
+        <div class="section-title">四、核心整合點</div>
+        
+        <div class="integration-item">
+            <h4>1. 技術與平台的對接</h4>
+            <ul>
+                <li>不是一般的 App：這是為了美髮師「邊看邊做」設計的容器。</li>
+                <li>價值：妳把美髮技術的「動作邏輯」轉化成了 App 的「功能邏輯」。</li>
+            </ul>
+        </div>
+
+        <div class="integration-item">
+            <h4>2. 教育與經營的對接</h4>
+            <ul>
+                <li>不是賣完就結束：這套系統內建了「美髮師升級路徑」。</li>
+                <li>價值：透過數據引導到官網的「顧問服務」，把「教育」變成「經營」的手段。</li>
+            </ul>
+        </div>
+
+        <div class="integration-item">
+            <h4>3. 通路與收銀的對接</h4>
+            <ul>
+                <li>不是被動等客：這是主動的「流量收口系統」。</li>
+                <li>價值：App 內完成「收銀、開票、開課」閉環，零延遲、零損耗。</li>
+            </ul>
+        </div>
+    </div>
+
 </body>
 </html>
