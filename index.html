@@ -185,18 +185,18 @@
         }
 
         function loadPage(element, fileName) {
-            // 切換 Active 樣式
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            element.classList.add('active');
+    // 切換 Active 樣式
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    element.classList.add('active');
 
-            // 更新頂部標題文字
-            const titleText = element.innerText.replace(/[🏠🌐📈🛡️🔄💰]/g, '').trim();
-            document.getElementById('current-title').innerText = titleText;
+    // 更新頂部標題文字
+    const titleText = element.innerText.replace(/[🏠🌐📈🛡️🔄💰]/g, '').trim();
+    document.getElementById('current-title').innerText = titleText;
 
-            // 載入頁面
-            document.getElementById('content-frame').src = baseUrl + encodeURIComponent(fileName);
-        }
-
+    // 【核心修改】：加上 v=(時間戳記) 防止瀏覽器抓舊資料
+    const timestamp = new Date().getTime();
+    document.getElementById('content-frame').src = baseUrl + encodeURIComponent(fileName) + "?v=" + timestamp;
+}
         function logout() {
             sessionStorage.removeItem('vsystem_unlocked');
             location.reload();
@@ -204,3 +204,4 @@
     </script>
 </body>
 </html>
+
