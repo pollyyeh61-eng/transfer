@@ -3,164 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1-10 支 App 生態佈局 - 數位王國</title>
+    <title>數位王國戰略總部 - V-System</title>
     <style>
         :root {
             --p: #00d2ff; 
             --s: #3a7bd5; 
+            --bg: #f4f7f9;
             --font-main: 18px; 
             --font-title: 20px; 
+            --sidebar-width: 280px;
         }
 
         body {
-            margin: 0; padding: 0; background: #f8fabb;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4ecf7 100%);
+            margin: 0; padding: 0; 
+            background: var(--bg);
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            color: #2c3e50; line-height: 1.6;
+            color: #2c3e50;
+            overflow: hidden; /* 防止主窗口捲動，由容器內部捲動 */
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
-
-        /* --- 標題區 --- */
-        .header-box { text-align: center; margin-bottom: 50px; }
-        .badge {
-            display: inline-block; background: linear-gradient(90deg, var(--p), var(--s));
-            color: white; padding: 5px 20px; border-radius: 50px;
-            font-size: 14px; font-weight: bold; letter-spacing: 2px; margin-bottom: 15px;
-        }
-        h1 { font-size: 32px; font-weight: 900; margin: 0; color: #222; }
-        .intro-text { font-size: var(--font-title); color: var(--s); font-weight: bold; margin-top: 10px; }
-
-        /* --- 階段標題 --- */
-        .stage-header {
-            font-size: var(--font-title); font-weight: 900; color: #fff;
-            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
-            padding: 12px 25px; border-radius: 15px; margin: 40px 0 20px 0;
-            display: inline-block; box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+        /* --- 登入解鎖層 (全螢幕蓋板) --- */
+        #login-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity 0.5s ease;
         }
 
-        /* --- App 卡片佈局 --- */
-        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-
-        .app-card {
-            background: white; padding: 25px; border-radius: 20px;
-            border: 1px solid #eee; position: relative;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+        .login-card {
+            width: 100%; max-width: 400px; padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px); border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 210, 255, 0.15);
+            text-align: center; border: 1px solid #fff;
         }
 
-        .app-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--p);
-            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.25);
+        input[type="password"] {
+            width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd;
+            font-size: 20px; text-align: center; letter-spacing: 8px; margin: 20px 0;
+            outline: none; box-sizing: border-box;
         }
 
-        .app-number {
-            font-size: 14px; font-weight: bold; color: var(--p);
-            border: 1px solid var(--p); padding: 2px 10px; border-radius: 10px;
-            display: inline-block; margin-bottom: 10px;
+        .login-btn {
+            width: 100%; padding: 16px; border-radius: 12px; border: none;
+            background: linear-gradient(90deg, var(--p), var(--s));
+            color: white; font-size: var(--font-title); font-weight: bold;
+            cursor: pointer; box-shadow: 0 8px 20px rgba(0, 210, 255, 0.3);
         }
 
-        .app-card h3 { 
-            font-size: var(--font-title); color: #222; margin: 0 0 10px 0; font-weight: 900; 
-            border-bottom: 2px solid #f0faff; padding-bottom: 5px;
+        /* --- 主容器佈局 --- */
+        .dashboard-container {
+            display: flex; height: 100vh; width: 100vw;
+            opacity: 0; transition: opacity 0.8s ease;
         }
 
-        .app-card p { font-size: var(--font-main); color: #444; margin: 5px 0; }
-        .app-card strong { color: var(--s); }
-
-        /* --- 返回按鈕 --- */
-        .back-btn {
-            position: fixed; bottom: 30px; right: 30px;
-            background: white; color: var(--s); padding: 15px 25px;
-            border-radius: 50px; text-decoration: none; font-weight: bold;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee;
-            transition: 0.3s; z-index: 100;
+        /* --- 側面導航欄 --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            border-right: 1px solid #e0e6ed;
+            display: flex; flex-direction: column;
+            padding: 30px 20px;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.02);
+            z-index: 10;
         }
-        .back-btn:hover { background: var(--s); color: white; }
+
+        .brand-logo {
+            font-size: 22px; font-weight: 900; 
+            background: linear-gradient(90deg, var(--p), var(--s));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 40px; text-align: center; letter-spacing: 2px;
+        }
+
+        .nav-menu { flex-grow: 1; }
+
+        .nav-item {
+            display: flex; align-items: center;
+            padding: 15px 20px; margin-bottom: 10px;
+            text-decoration: none; color: #606f7b;
+            font-size: 17px; font-weight: 600;
+            border-radius: 12px; transition: 0.3s;
+        }
+
+        .nav-item:hover {
+            background: #f0faff; color: var(--s);
+            transform: translateX(5px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, var(--p), var(--s));
+            color: white; box-shadow: 0 8px 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .nav-icon { margin-right: 15px; font-size: 20px; }
+
+        .logout-link {
+            padding: 15px 20px; color: #b8c2cc; text-decoration: none;
+            font-size: 14px; text-align: center; border-top: 1px solid #f0f0f0;
+        }
+
+        /* --- 右側內容容器 --- */
+        .main-content {
+            flex-grow: 1; padding: 0; background: var(--bg);
+            display: flex; flex-direction: column;
+        }
+
+        /* 內嵌網頁的容器 */
+        iframe {
+            width: 100%; height: 100%; border: none;
+            background: var(--bg);
+        }
+
+        .header-bar {
+            height: 70px; background: white; border-bottom: 1px solid #e0e6ed;
+            display: flex; align-items: center; padding: 0 40px;
+            justify-content: space-between;
+        }
+
+        .status-badge {
+            background: #e8f9f1; color: #2ecc71; padding: 5px 15px;
+            border-radius: 20px; font-size: 12px; font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header-box">
-        <div class="badge">V-SYSTEM ARCHITECTURE</div>
-        <h1>10 支 App 生態佈局</h1>
-        <p class="intro-text">完整呈現：從流量門戶到經營者戰情室</p>
-    </div>
-
-    <div class="stage-header">第一階段：數位流量門戶 (獲客與品牌)</div>
-    <div class="app-grid">
-        <div class="app-card">
-            <div class="app-number">App 01</div>
-            <h3>美學入口平台</h3>
-            <p><strong>定位：</strong> 品牌數位總部。</p>
-            <p><strong>核心：</strong> 高質感作品集展示、AI 髮型模擬、品牌故事，建立「第一眼」的專業權威感。</p>
-        </div>
-        <div class="app-card">
-            <div class="app-number">App 02</div>
-            <h3>銷售開發系統</h3>
-            <p><strong>定位：</strong> 主動式數位掃描儀。</p>
-            <p><strong>核心：</strong> 透過社群廣告投放數據對接，抓取潛在客群名單，提供新客專屬數位憑證，將流量私域化。</p>
+    <div id="login-overlay">
+        <div class="login-card">
+            <div style="font-size: 40px; margin-bottom: 10px;">🛡️</div>
+            <h2>戰略總部驗證</h2>
+            <p style="font-size: 14px; color: #888;">請輸入授權碼解鎖數位資產</p>
+            <input type="password" id="passInput" placeholder="••••••••" onkeypress="if(event.key==='Enter') checkPassword()">
+            <button class="login-btn" onclick="checkPassword()">進入系統</button>
         </div>
     </div>
 
-    <div class="stage-header">第二階段：極致營運中樞 (標準化與利潤)</div>
-    <div class="app-grid">
-        <div class="app-card">
-            <div class="app-number">App 03</div>
-            <h3>自動預約系統</h3>
-            <p><strong>核心：</strong> 客戶前端預約，設計師後端接單，指定與不指定排程，實現24小時接單。</p>
-        </div>
-        <div class="app-card">
-            <div class="app-number">App 04</div>
-            <h3>銷售收銀</h3>
-            <p><strong>核心：</strong> 每一筆服務即時轉化為財務報告，自動連結到會員卡系統。</p>
-        </div>
-        <div class="app-card">
-            <div class="app-number">App 05</div>
-            <h3>精確庫存管理</h3>
-            <p><strong>核心：</strong> 職用品、髮品、耗材等庫存，過量與不夠的預警，將浪費轉化為淨利。</p>
-        </div>
+    <div class="dashboard-container" id="dashboard">
+        <aside class="sidebar">
+            <div class="brand-logo">V-SYSTEM CENTER</div>
+            
+            <nav class="nav-menu">
+                <a href="javascript:void(0)" class="nav-item active" onclick="loadPage(this, '歡迎頁面.html')">
+                    <span class="nav-icon">🏠</span> 歡迎首頁
+                </a>
+                <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '1-10 支 App 生態佈局.html')">
+                    <span class="nav-icon">🌐</span> App 生態佈局
+                </a>
+                <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '2經營策略.html')">
+                    <span class="nav-icon">📈</span> 2. 經營策略
+                </a>
+                <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '3現金流守護.html')">
+                    <span class="nav-icon">🛡️</span> 3. 現金流守護
+                </a>
+                <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '4閉環邏輯.html')">
+                    <span class="nav-icon">🔄</span> 4. 閉環邏輯
+                </a>
+                <a href="javascript:void(0)" class="nav-item" onclick="loadPage(this, '5數位資產技轉利潤拆解預估.html')">
+                    <span class="nav-icon">💰</span> 5. 利潤拆解
+                </a>
+            </nav>
+
+            <a href="javascript:void(0)" class="logout-link" onclick="logout()">🔒 安全登出系統</a>
+        </aside>
+
+        <main class="main-content">
+            <div class="header-bar">
+                <div id="current-title" style="font-weight: bold; font-size: 18px;">戰略儀表板</div>
+                <div class="status-badge">● 系統授權已啟用</div>
+            </div>
+            <iframe id="content-frame" src="歡迎頁面.html"></iframe>
+        </main>
     </div>
 
-    <div class="stage-header">第三階段：終身價值鎖定 (存量與回流)</div>
-    <div class="app-grid">
-        <div class="app-card">
-            <div class="app-number">App 06</div>
-            <h3>CRM 客戶管理</h3>
-            <p><strong>核心：</strong> 記錄服務歷史、對話偏好，設定下次提醒服務預約。</p>
-        </div>
-        <div class="app-card">
-            <div class="app-number">App 07</div>
-            <h3>會員升級與遊戲化系統</h3>
-            <p><strong>核心：</strong> 儲值、點數、勳章制度。建立階級特權感，拉高「離開成本」，提升回流率。</p>
-        </div>
-    </div>
+    <script>
+        const baseUrl = "https://pollyyeh61-eng.github.io/transfer/";
 
-    <div class="stage-header">第四階段：人才權威與倍增 (擴張與分潤)</div>
-    <div class="app-grid">
-        <div class="app-card">
-            <div class="app-number">App 08</div>
-            <h3>自動分潤結算系統</h3>
-            <p><strong>核心：</strong> 獎金透明化。解決傳統業「帳目黑箱」問題，提升員工信任度與積極度。</p>
-        </div>
-        <div class="app-card">
-            <div class="app-number">App 09</div>
-            <h3>數位技術學院</h3>
-            <p><strong>核心：</strong> 設計「闖關解鎖」機制，學員必須通過 App 考核才能晉升。</p>
-        </div>
-        <div class="app-card">
-            <div class="app-number">App 10</div>
-            <h3>經營者決策戰情室</h3>
-            <p><strong>核心：</strong> 將技術標準化為影音課。提供給老闆或店長的最高級別視圖。</p>
-        </div>
-    </div>
+        window.onload = function() {
+            const isUnlocked = sessionStorage.getItem('vsystem_unlocked');
+            if (isUnlocked === 'true') {
+                showDashboard();
+            }
+        };
 
-    <p style="text-align: center; margin-top: 60px; color: #999; font-size: 14px;">V-SYSTEM ECOSYSTEM © 2026</p>
-</div>
+        function checkPassword() {
+            if (document.getElementById('passInput').value === "100") {
+                sessionStorage.setItem('vsystem_unlocked', 'true');
+                showDashboard();
+            } else {
+                alert("授權碼錯誤");
+            }
+        }
 
-<a href="index.html" class="back-btn">← 返回戰略總部</a>
+        function showDashboard() {
+            document.getElementById('login-overlay').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('login-overlay').style.display = 'none';
+                document.getElementById('dashboard').style.opacity = '1';
+            }, 500);
+        }
 
+        function loadPage(element, fileName) {
+            // 切換 Active 樣式
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            // 更新標題
+            document.getElementById('current-title').innerText = element.innerText.replace(/[🏠🌐📈🛡️🔄💰]/g, '').trim();
+
+            // 載入頁面 (處理中文路徑)
+            document.getElementById('content-frame').src = baseUrl + encodeURIComponent(fileName);
+        }
+
+        function logout() {
+            sessionStorage.removeItem('vsystem_unlocked');
+            location.reload();
+        }
+    </script>
 </body>
 </html>
