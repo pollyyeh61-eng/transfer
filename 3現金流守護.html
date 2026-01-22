@@ -4,46 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        :root { --p: #ff416c; --s: #ff4b2b; --font-main: 18px; --font-title: 20px; --bg-soft: #fff5f5; }
-        body { margin: 0; padding: 40px; background: var(--bg-soft); font-family: 'PingFang TC', sans-serif; color: #2c3e50; line-height: 1.8; }
-        .hero-section { background: white; border-radius: 40px; padding: 50px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-bottom: 40px; }
-        .red-pill { background: linear-gradient(90deg, #ff416c, #ff4b2b); color: white; padding: 10px 30px; border-radius: 50px; display: inline-block; font-size: 16px; font-weight: bold; box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3); margin-bottom: 25px; }
-        h1 { font-size: 36px; font-weight: 900; color: #1a2a3a; margin: 10px 0; }
-        .sub-desc { color: #ff4b2b; font-size: var(--font-title); font-weight: bold; }
+        :root { 
+            --p: #00d2ff; 
+            --s: #3a7bd5; 
+            --font-main: 18px; 
+            --font-title: 20px; 
+            --bg-soft: #f0f7ff; 
+        }
+        body { 
+            margin: 0; padding: 40px; background: var(--bg-soft); 
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
+            color: #2c3e50; line-height: 1.8; 
+        }
+        /* 沿用利潤拆解頁面的藍色泡泡與大圓角風格 */
+        .hero-section { 
+            background: white; border-radius: 40px; padding: 50px; 
+            text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); 
+            margin-bottom: 40px; 
+        }
+        .blue-pill { 
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5); color: white; 
+            padding: 10px 45px; border-radius: 50px; display: inline-block; 
+            font-size: 18px; font-weight: bold; box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3); 
+            margin-bottom: 25px; 
+        }
+        h1 { font-size: 32px; font-weight: 900; color: #1a2a3a; margin: 10px 0; }
         
-        .stage-title { font-size: var(--font-title); font-weight: 900; color: #ff4b2b; border-left: 6px solid #ff416c; padding-left: 15px; margin: 50px 0 25px; }
-        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .app-card { background: white; border-radius: 30px; padding: 30px; border: 1px solid #ffebeb; transition: 0.4s; position: relative; }
-        .app-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(255, 65, 108, 0.15); border-color: #ff416c; }
-        h3 { font-size: var(--font-title); color: #1a2a3a; margin: 0 0 15px 0; font-weight: 900; }
-        p { font-size: var(--font-main); color: #5a6a85; margin: 8px 0; }
+        .content-card { 
+            background: white; border-radius: 35px; padding: 45px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03); margin-top: 30px;
+        }
+        .section-tag { 
+            background: #3498db; color: white; padding: 12px 35px; 
+            border-radius: 50px; display: inline-block; font-size: 20px; 
+            font-weight: bold; margin-bottom: 25px; 
+        }
+        .text-block { font-size: var(--font-main); color: #2c3e50; margin-bottom: 30px; }
+        .highlight-line { border-left: 6px solid #00d2ff; padding-left: 15px; font-weight: 900; margin: 25px 0; font-size: 20px; }
+        
+        ul { padding-left: 20px; }
+        li { margin-bottom: 15px; font-size: var(--font-main); }
     </style>
 </head>
 <body>
+
     <div class="hero-section">
-        <div class="red-pill">CASHFLOW PROTECTION</div>
-        <h1>3. 現金流守護</h1>
-        <p class="sub-desc">數位資產保值與獲利安全機制</p>
+        <div class="blue-pill">BUSINESS CLOSED LOOP</div>
+        <h1>4. 閉環邏輯</h1>
     </div>
 
-    <div class="stage-title">第一層：數位資產確權</div>
-    <div class="app-grid">
-        <div class="app-card">
-            <h3>客戶名單私域化</h3>
-            <p>防止員工離職帶走客群，所有顧客資料與服務歷史皆鎖定於品牌雲端系統，確保資產不流失。</p>
+    <div class="content-card">
+        <div class="section-tag">下單成交與營業漏斗閉環</div>
+        
+        <div class="text-block">
+            <div class="highlight-line">核心邏輯：從獲客到轉化的完全自動化</div>
+            <p>透過數位系統的串聯，讓每一個流量進入後都能被精確追蹤與引導，達成利潤最大化。</p>
+        </div>
+
+        <div class="text-block">
+            <div class="highlight-line">三個關鍵閉環點：</div>
+            <ul>
+                <li><strong>流量收口：</strong>利用 App 01/02 建立第一眼權威感並抓取潛在客群名單，讓流量不只是路過。</li>
+                <li><strong>營運自動化：</strong>透過 App 03/04/05 確保服務、收銀、庫存精準對接，降低人為損耗。</li>
+                <li><strong>終身價值鎖定：</strong>利用 App 06/07 的 CRM 與遊戲化機制，讓顧客產生高黏著度，達成重複消費。</li>
+            </ul>
         </div>
     </div>
 
-    <div class="stage-title">第二層：預收與鎖定</div>
-    <div class="app-grid">
-        <div class="app-card">
-            <h3>儲值金管理</h3>
-            <p>透過自動收銀與會員點數系統，精確計算遞延收入，確保現金流穩定且可預測。</p>
-        </div>
-        <div class="app-card">
-            <h3>耗材成本自動控管</h3>
-            <p>系統實時連動庫存與銷售，預防資產浪費，將每一分成本轉化為淨利守護。</p>
-        </div>
-    </div>
 </body>
 </html>
