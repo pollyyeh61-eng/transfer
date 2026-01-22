@@ -1,44 +1,49 @@
-<div style="background: linear-gradient(135deg, rgba(255, 240, 245, 0.8) 0%, rgba(230, 240, 255, 0.8) 50%, rgba(240, 230, 255, 0.8) 100%); border: 2px solid rgba(255, 255, 255, 0.6); border-radius: 40px; padding: 50px 30px; margin: 30px 0; font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(181, 154, 93, 0.15); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);">
-    
-    <div style="position: absolute; top: -20%; left: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 182, 193, 0.4) 0%, transparent 70%); filter: blur(40px);"></div>
-    <div style="position: absolute; bottom: -20%; right: -10%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(135, 206, 250, 0.4) 0%, transparent 70%); filter: blur(40px);"></div>
-
-    <div style="text-align: center; margin-bottom: 45px; position: relative; z-index: 1;">
-        <h3 style="background: linear-gradient(90deg, #6a5acd, #db7093); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; letter-spacing: 3px; font-weight: 900; margin-bottom: 12px;">數位現金流守護：防止無感流失</h3>
-        <p style="color: #666; font-size: 16px; font-weight: 500; letter-spacing: 1px;">「看不見的浪費，才是經營最大的黑洞。」</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; position: relative; z-index: 1;">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root { --p: #ff416c; --s: #ff4b2b; --font-main: 18px; --font-title: 20px; --bg-soft: #fff5f5; }
+        body { margin: 0; padding: 40px; background: var(--bg-soft); font-family: 'PingFang TC', sans-serif; color: #2c3e50; line-height: 1.8; }
+        .hero-section { background: white; border-radius: 40px; padding: 50px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        .red-pill { background: linear-gradient(90deg, #ff416c, #ff4b2b); color: white; padding: 10px 30px; border-radius: 50px; display: inline-block; font-size: 16px; font-weight: bold; box-shadow: 0 10px 20px rgba(255, 65, 108, 0.3); margin-bottom: 25px; }
+        h1 { font-size: 36px; font-weight: 900; color: #1a2a3a; margin: 10px 0; }
+        .sub-desc { color: #ff4b2b; font-size: var(--font-title); font-weight: bold; }
         
-        <div style="background: rgba(255, 255, 255, 0.4); padding: 35px 25px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;">
-            <div style="font-size: 32px; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">🌸</div>
-            <h4 style="color: #4a4a4a; font-size: 20px; font-weight: bold; margin-bottom: 15px;">過剩提醒：資金解凍</h4>
-            <p style="color: #555; font-size: 15px; line-height: 1.8; text-align: justify;">
-                偵測積壓、流動性低的產品，防止現金卡死在貨架，將<span style="color: #db7093; font-weight: bold;">「死貨」變回「活錢」</span>。
-            </p>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.4); padding: 35px 25px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;">
-            <div style="font-size: 32px; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">💎</div>
-            <h4 style="color: #4a4a4a; font-size: 20px; font-weight: bold; margin-bottom: 15px;">短缺提醒：機會捕捉</h4>
-            <p style="color: #555; font-size: 15px; line-height: 1.8; text-align: justify;">
-                安全庫存不足警示，確保服務不中斷，抓住每一筆<span style="color: #4682b4; font-weight: bold;">即時現流</span>。
-            </p>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.4); padding: 35px 25px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s;">
-            <div style="font-size: 32px; margin-bottom: 15px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));">✨</div>
-            <h4 style="color: #4a4a4a; font-size: 20px; font-weight: bold; margin-bottom: 15px;">浪費阻斷：毛利定錨</h4>
-            <p style="color: #555; font-size: 15px; line-height: 1.8; text-align: justify;">
-                針對異常損耗預警，讓<span style="color: #9370db; font-weight: bold;">「不知不覺失去」</span>的隱性成本無所遁形。
-            </p>
-        </div>
-
+        .stage-title { font-size: var(--font-title); font-weight: 900; color: #ff4b2b; border-left: 6px solid #ff416c; padding-left: 15px; margin: 50px 0 25px; }
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .app-card { background: white; border-radius: 30px; padding: 30px; border: 1px solid #ffebeb; transition: 0.4s; position: relative; }
+        .app-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(255, 65, 108, 0.15); border-color: #ff416c; }
+        h3 { font-size: var(--font-title); color: #1a2a3a; margin: 0 0 15px 0; font-weight: 900; }
+        p { font-size: var(--font-main); color: #5a6a85; margin: 8px 0; }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="red-pill">CASHFLOW PROTECTION</div>
+        <h1>3. 現金流守護</h1>
+        <p class="sub-desc">數位資產保值與獲利安全機制</p>
     </div>
 
-    <div style="margin-top: 50px; text-align: center; position: relative; z-index: 1;">
-        <p style="background: linear-gradient(90deg, #db7093, #6a5acd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 18px; font-weight: bold; letter-spacing: 1px;">
-            V-System 讓經營不再靠感覺，而是靠精準的「數位提醒」。
-        </p>
+    <div class="stage-title">第一層：數位資產確權</div>
+    <div class="app-grid">
+        <div class="app-card">
+            <h3>客戶名單私域化</h3>
+            <p>防止員工離職帶走客群，所有顧客資料與服務歷史皆鎖定於品牌雲端系統，確保資產不流失。</p>
+        </div>
     </div>
-</div>
+
+    <div class="stage-title">第二層：預收與鎖定</div>
+    <div class="app-grid">
+        <div class="app-card">
+            <h3>儲值金管理</h3>
+            <p>透過自動收銀與會員點數系統，精確計算遞延收入，確保現金流穩定且可預測。</p>
+        </div>
+        <div class="app-card">
+            <h3>耗材成本自動控管</h3>
+            <p>系統實時連動庫存與銷售，預防資產浪費，將每一分成本轉化為淨利守護。</p>
+        </div>
+    </div>
+</body>
+</html>
