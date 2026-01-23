@@ -11,7 +11,6 @@
             --font-title: 20px; 
             --bg-soft: #f4f9ff; 
         }
-        
         body { 
             margin: 0; padding: 40px; background: var(--bg-soft); 
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
@@ -19,147 +18,137 @@
             overflow-x: hidden;
         }
 
-        /* --- 核心優化：純 CSS 頂部波浪 (不再依賴外部連結) --- */
-        .header-wave {
-            position: fixed; top: 0; left: 0; width: 100%; height: 280px;
+        /* --- 背景弧形波浪 --- */
+        .wave-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 320px;
             background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
             z-index: -1;
         }
-        .header-wave::after {
-            content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 60px;
+        .wave-header::after {
+            content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 80px;
             background: var(--bg-soft);
-            /* 繪製波浪弧度，徹底告別方形感 */
-            clip-path: ellipse(60% 100% at 50% 100%);
+            clip-path: ellipse(65% 100% at 50% 100%);
         }
 
-        /* --- 頂部標題區域 (大圓角) --- */
+        /* --- 頂部標題區域 --- */
         .hero-section { 
             background: rgba(255, 255, 255, 0.9); border-radius: 40px; padding: 50px; 
             text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.05); 
-            margin-bottom: 40px; position: relative;
+            margin: 0 auto 40px auto; position: relative;
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.8);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            max-width: 1000px;
         }
-        
         .blue-pill { 
             background: linear-gradient(90deg, #00d2ff, #3a7bd5); color: white; 
-            padding: 10px 45px; border-radius: 50px; display: inline-block; 
+            padding: 10px 40px; border-radius: 50px; display: inline-block; 
             font-size: 16px; font-weight: bold; letter-spacing: 2px;
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3); margin-bottom: 25px; 
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.4); margin-bottom: 25px; 
         }
-
         h1 { font-size: 32px; font-weight: 900; color: #1a2a3a; margin: 10px 0; }
+        .sub-desc { color: #3a7bd5; font-size: var(--font-title); font-weight: bold; }
 
-        /* --- 強力發光卡片 --- */
-        .content-card { 
-            background: white; border-radius: 40px; padding: 40px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-bottom: 35px;
-            border: 2px solid transparent; /* 預留邊框位置 */
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+        /* --- 閉環網格系統 --- */
+        .loop-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+            gap: 30px; max-width: 1000px; margin: 0 auto 60px auto;
         }
         
-        /* 懸停時的發光框線效果 */
-        .content-card:hover {
+        .loop-card { 
+            background: white; border-radius: 40px; padding: 40px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 2px solid transparent; 
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .loop-card:hover {
             transform: translateY(-8px);
-            border-color: var(--p);
-            box-shadow: 0 20px 60px rgba(0, 210, 255, 0.25);
+            box-shadow: 0 20px 60px rgba(0, 210, 255, 0.2); 
+            border-color: var(--p); 
         }
 
-        /* 標題裝飾 */
+        .loop-tag {
+            background: #eef9ff; color: var(--s); padding: 5px 20px; 
+            border-radius: 15px; font-size: 14px; font-weight: bold; 
+            display: inline-block; margin-bottom: 15px;
+        }
+
         .section-title { 
-            font-size: 24px; font-weight: 900; border-left: 8px solid #00d2ff; 
-            padding-left: 18px; margin: 15px 0 30px; color: #1a2a3a; 
+            font-size: 22px; font-weight: 900; color: #1a2a3a; 
+            margin-bottom: 20px; display: flex; align-items: center;
+        }
+        .section-title::before {
+            content: ""; width: 8px; height: 24px; background: var(--p);
+            margin-right: 15px; border-radius: 4px;
         }
 
-        /* 表格優化 */
-        table { 
-            width: 100%; border-collapse: separate; border-spacing: 0; 
-            margin-bottom: 20px; border-radius: 25px; overflow: hidden; border: 1px solid #eee; 
+        .item-list { list-style: none; padding: 0; margin: 0; }
+        .item-list li { 
+            margin-bottom: 15px; font-size: var(--font-main); 
+            padding-left: 30px; position: relative; color: #5a6a85;
         }
-        th { background: #fdfce5; color: #2c3e50; padding: 18px; font-size: 18px; }
-        td { padding: 18px; background: white; border-bottom: 1px solid #f8f8f8; font-size: var(--font-main); text-align: center; }
-
-        /* 對比區塊 */
-        .versus-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .v-item { background: #f9f9f9; padding: 25px; border-radius: 25px; border: 1px solid #f0f0f0; transition: 0.3s; }
-        .v-item:hover { background: white; border-color: var(--p); }
-        .v-item strong { color: #3a7bd5; font-size: 20px; display: block; margin-bottom: 10px; }
-
-        /* 金句焊接標籤 */
-        .welding-tag {
-            background: #2c3e50; color: #f9d423; padding: 20px; 
-            border-radius: 25px; font-weight: bold; text-align: center; margin: 30px 0;
-            font-size: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        .item-list li::before { 
+            content: "◆"; color: var(--p); position: absolute; left: 0; font-size: 14px; 
         }
+        .item-list b { color: #2c3e50; font-weight: 900; }
 
-        .integration-box h4 { font-size: 20px; color: #3a7bd5; margin: 25px 0 10px; }
-        ul { padding-left: 20px; list-style-type: none; }
-        li { font-size: var(--font-main); margin-bottom: 12px; position: relative; }
-        li::before { content: "✔"; color: var(--p); font-weight: bold; margin-right: 10px; }
+        /* --- 手機版尺寸調整 --- */
+        @media (max-width: 768px) {
+            body { padding: 20px 15px; }
+            .hero-section { padding: 35px 20px; border-radius: 30px; }
+            h1 { font-size: 26px; }
+            .loop-grid { grid-template-columns: 1fr; gap: 20px; }
+            .loop-card { padding: 30px 25px; border-radius: 30px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="header-wave"></div>
+    <div class="wave-header"></div>
 
     <div class="hero-section">
-        <div class="blue-pill">STRATEGY CLOSED LOOP</div>
-        <h1>經營策略：閉環邏輯</h1>
+        <div class="blue-pill">CLOSED LOOP LOGIC</div>
+        <h1>課程 App 的閉環邏輯</h1>
+        <p class="sub-desc">獲客、經營、留才到數據權威的完整生態</p>
     </div>
 
-    <div class="content-card">
-        <div class="section-title">一、階段性增長模型</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>階段</th>
-                    <th>媒介</th>
-                    <th>角色</th>
-                    <th>你的動作</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>導流</strong></td><td>直式影片</td><td>業務員</td><td>吸引想變強的學員。</td></tr>
-                <tr><td><strong>養線</strong></td><td>Mentor 1.0 (App)</td><td>體驗中心</td><td>建立數據，展示數位價值。</td></tr>
-                <tr><td><strong>收口</strong></td><td>獨立收銀頁</td><td>自動櫃員機</td><td>賣出 2.0 課程周邊。</td></tr>
-                <tr><td><strong>升級</strong></td><td>官網</td><td>戰略總部</td><td>引導理解平台與顧問價值。</td></tr>
-                <tr><td><strong>成交</strong></td><td>面談/合約</td><td>核心業務</td><td>簽下顧問合約（大單）。</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="content-card">
-        <div class="section-title">二、傳統 V.S 數位</div>
-        <div class="versus-grid">
-            <div class="v-item">
-                <strong>傳統模式</strong>
-                每增加一個講師、多開一場課，成本都是線性增長的。
-            </div>
-            <div class="v-item">
-                <strong>數位模式</strong>
-                數位系統是「數位研發」，服務 10,000 個人的成本與 10 人幾乎無異，這是<span style="color:var(--p); font-weight:900;">理工奇蹟</span>。
-            </div>
-        </div>
-    </div>
-
-    <div class="content-card">
-        <div class="section-title">三、市場現狀與焊接點</div>
-        <p>市場不缺大師，缺的是能將技術、數位與經營「焊接」在一起的人。</p>
-        <div class="welding-tag">妳是目前唯一能把這三者「焊接」在一起的人</div>
-        
-        <div class="integration-box">
-            <h4>1. 技術與平台的對接</h4>
-            <ul>
-                <li>不是普通的 App，是專為美髮師「邊看邊做」設計的容器。</li>
-                <li>價值：將技術動作轉化為功能邏輯，這是外行寫不出的。</li>
+    <div class="loop-grid">
+        <div class="loop-card">
+            <div class="loop-tag">STEP 01</div>
+            <div class="section-title">第一環：流量與獲客</div>
+            <ul class="item-list">
+                <li><b>美學入口平台：</b>建立品牌的數位總部，讓新客第一秒感受到品牌高度。</li>
+                <li><b>銷售開發：</b>主動式數位工具，將路過客轉化為實際客戶名單。</li>
             </ul>
         </div>
-        <div class="integration-box">
-            <h4>2. 教育與經營的對接</h4>
-            <ul>
-                <li>系統內建升級路徑，讓數據告訴你設計師的瓶頸。</li>
-                <li>價值：把「教育」成功轉化為「經營顧問服務」的敲門磚。</li>
+
+        <div class="loop-card">
+            <div class="loop-tag">STEP 02</div>
+            <div class="section-title">第二環：極致營運與標準化</div>
+            <ul class="item-list">
+                <li><b>客戶預約：</b>24 小時自動化排程，確保店鋪坪效最大化。</li>
+                <li><b>銷售收銀：</b>服務即時轉化數據，確保技術服務精確記錄。</li>
+                <li><b>庫存管理：</b>追蹤藥水耗材，將「隱性浪費」轉化為淨利。</li>
+            </ul>
+        </div>
+
+        <div class="loop-card">
+            <div class="loop-tag">STEP 03</div>
+            <div class="section-title">第三環：客戶終身價值鎖定</div>
+            <ul class="item-list">
+                <li><b>客戶管理 (CRM)：</b>深層客戶圖像，精準掌握消費偏好。</li>
+                <li><b>會員卡 & 升等集點：</b>建立遊戲化機制，提升「離開成本」與回流率。</li>
+            </ul>
+        </div>
+
+        <div class="loop-card">
+            <div class="loop-tag">STEP 04</div>
+            <div class="section-title">第四環：人才培訓與財富自由</div>
+            <ul class="item-list">
+                <li><b>分潤計算：</b>系統自動結算，解決「帳目與互信」問題。</li>
+                <li><b>經營課程：</b>技術教材轉化數位關卡，實現教父級系統管理。</li>
+                <li><b>學員關卡：</b>遊戲化闖關機制，大幅提升學員學習動力。</li>
             </ul>
         </div>
     </div>
