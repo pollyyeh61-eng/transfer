@@ -16,7 +16,8 @@
             font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; 
             color: #2c3e50; line-height: 1.8; 
             display: flex; justify-content: center; align-items: center; min-height: 100vh;
-            overflow: hidden; /* 防止捲軸干擾視覺 */
+            /* 手機版允許捲動，電腦版則保持簡潔 */
+            overflow-x: hidden; 
         }
         
         /* --- 核心優化：純 CSS 頂部與底部波浪 --- */
@@ -25,20 +26,18 @@
             background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
             z-index: -1;
         }
-        /* 頂部切口 */
         .wave-bg::before {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100px;
             background: var(--bg-soft);
             clip-path: ellipse(70% 100% at 50% 0%);
         }
-        /* 底部切口 */
         .wave-bg::after {
             content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 100px;
             background: var(--bg-soft);
             clip-path: ellipse(70% 100% at 50% 100%);
         }
 
-        /* --- 核心內容卡片 (強化發光) --- */
+        /* --- 核心內容卡片 (RWD 尺寸優化) --- */
         .hero-section { 
             background: rgba(255, 255, 255, 0.95); border-radius: 50px; padding: 60px 50px; 
             text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,0.1); 
@@ -48,14 +47,14 @@
             transition: all 0.5s ease;
             position: relative;
         }
-        /* 懸停時整體發光 */
+        
+        /* 懸停發光保持 */
         .hero-section:hover {
             border-color: var(--p);
             box-shadow: 0 40px 100px rgba(0, 210, 255, 0.3);
             transform: translateY(-5px);
         }
 
-        /* 藍色藥丸標籤 */
         .blue-pill { 
             background: linear-gradient(90deg, #00d2ff, #3a7bd5); color: white; 
             padding: 12px 45px; border-radius: 50px; display: inline-block; 
@@ -90,10 +89,29 @@
             color: #1a2a3a; font-weight: 900; border-bottom: 3px solid #f9d423; 
         }
 
-        /* 底部裝飾 */
         .footer-tag {
             margin-top: 40px; font-size: 14px; color: #a0aec0;
             letter-spacing: 2px; font-weight: bold;
+        }
+
+        /* --- 手機版專屬尺寸調整 (核心修正) --- */
+        @media (max-width: 768px) {
+            body { 
+                padding: 10px; 
+                align-items: flex-start; /* 手機版頂部對齊，防止被切掉 */
+                overflow-y: auto; /* 允許垂直滾動 */
+            }
+            .hero-section {
+                padding: 40px 20px; /* 縮小內邊距以適應螢幕 */
+                width: 95%;
+                margin-top: 50px; /* 給頂部波浪預留空間 */
+                margin-bottom: 50px;
+                border-radius: 35px; /* 稍微縮小圓角 */
+            }
+            h1 { font-size: 28px; } /* 縮小標題避免爆版 */
+            .blue-pill { padding: 10px 25px; font-size: 14px; }
+            .content-card { padding: 25px; border-radius: 25px; }
+            .welcome-desc { font-size: 18px; margin-bottom: 15px; }
         }
     </style>
 </head>
@@ -117,4 +135,3 @@
 
 </body>
 </html>
-
